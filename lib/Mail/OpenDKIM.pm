@@ -134,7 +134,7 @@ our @EXPORT = qw(
 );
 
 use vars qw($VERSION);
-$VERSION = sprintf "%d", q$Revision: 3186 $ =~ /(\d+)/;
+$VERSION = sprintf "%d", q$Revision: 3226 $ =~ /(\d+)/;
 
 require XSLoader;
 XSLoader::load('Mail::OpenDKIM', $VERSION);
@@ -656,6 +656,10 @@ You can find documentation for this module with the perldoc command.
 You can also look for information at:
 
 =over 4
+
+=item * MailerMailer Project page
+
+L<http://www.mailermailer.com/labs/projects/Mail-OpenDKIM.rwp>
 
 =item * RT: CPAN's request tracker
 

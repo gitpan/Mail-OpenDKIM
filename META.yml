@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Mail-OpenDKIM
-version:            3186
+version:            3226
 abstract:           Provides an interface to OpenDKIM C library
 author:
     - Nigel Horne <nigel@mailermailer.com>
