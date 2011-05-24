@@ -134,7 +134,7 @@ our @EXPORT = qw(
 );
 
 use vars qw($VERSION);
-$VERSION = sprintf "%d", q$Revision: 3226 $ =~ /(\d+)/;
+$VERSION = sprintf "%d", q$Revision: 3230 $ =~ /(\d+)/;
 
 require XSLoader;
 XSLoader::load('Mail::OpenDKIM', $VERSION);
