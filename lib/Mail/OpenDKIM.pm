@@ -73,7 +73,10 @@ use constant DKIM_SIGFLAG_IGNORE => 1;
 use constant DKIM_OP_GETOPT => 0;
 use constant DKIM_OP_SETOPT => 1;
 
+use constant DKIM_OPTS_FLAGS => 0;
 use constant DKIM_OPTS_TMPDIR => 1;
+
+use constant DKIM_LIBFLAGS_FIXCRLF => 0x0100;
 
 our @EXPORT_OK = ( @{ $EXPORT_TAGS{'all'} } );
 
@@ -130,11 +133,14 @@ our @EXPORT = qw(
   DKIM_OP_GETOPT
   DKIM_OP_SETOPT
 
+  DKIM_OPTS_FLAGS
   DKIM_OPTS_TMPDIR
+
+  DKIM_LIBFLAGS_FIXCRLF
 );
 
 use vars qw($VERSION);
-$VERSION = sprintf "%d", q$Revision: 3230 $ =~ /(\d+)/;
+$VERSION = sprintf "%d", q$Revision: 3253 $ =~ /(\d+)/;
 
 require XSLoader;
 XSLoader::load('Mail::OpenDKIM', $VERSION);
@@ -146,6 +152,8 @@ XSLoader::load('Mail::OpenDKIM', $VERSION);
 Mail::OpenDKIM - Provides an interface to libOpenDKIM
 
 =head1 SYNOPSIS
+
+ # sign outgoing message
 
  use Mail::DKIM::Signer;
 
@@ -172,6 +180,32 @@ Mail::OpenDKIM - Provides an interface to libOpenDKIM
  # what is the signature result?
  my $signature = $dkim->signature;
  print $signature->as_string;
+
+ # check validity of incoming message
+ my $o = Mail::OpenDKIM->new();
+ $o->dkim_init();
+
+ my $d = $o->dkim_verify({
+  id => 'MLM',
+ });
+
+ $msg =~ s/\n/\r\n/g;
+
+ $d->dkim_chunk({ chunkp => $msg, len => length($msg) });
+
+ $d->dkim_chunk({ chunkp => '', len => 0 });
+
+ $d->dkim_eom();
+
+ my $sig = $d->dkim_getsignature();
+
+ $d->dkim_sig_process({ sig => $sig });
+
+ printf "0x\n", $d->dkim_sig_getflags({ sig => $sig });
+
+ $d->dkim_free();
+
+ $o->dkim_close();
 
 =head1 DESCRIPTION
 

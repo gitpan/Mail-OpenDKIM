@@ -1,6 +1,32 @@
-# $Id: Makefile.PL 3225 2011-05-18 21:54:50Z khera $
+# $Id: Makefile.PL 3253 2011-06-14 22:28:14Z nigel $
 use 5.010000;
 use ExtUtils::MakeMaker;
+use Config;
+
+use ExtUtils::Liblist;
+
+# Check that OpenDKIM has been installed
+
+my $libpath = ExtUtils::Liblist->ext('-lopendkim');
+
+unless($libpath) {
+	my $found = 0;
+
+	foreach(split(/\s+/, $Config{libpth})) {
+		my $filename = "$_/libopendkim.$Config{so}";
+		if((-r $filename) && (-f $filename)) {
+			$found = 1;
+			last;
+		}
+	}
+
+	# TODO: Windows, etc
+	unless($found) {
+		die 'Please install libopendkim >= 2.3 from http://www.opendkim.org/';
+	}
+	# TODO: Check the installed version is >= 2.3
+}
+
 WriteMakefile(
     NAME => 'Mail::OpenDKIM',
     PREREQ_PM => {
