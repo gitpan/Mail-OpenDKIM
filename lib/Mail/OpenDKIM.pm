@@ -140,7 +140,7 @@ our @EXPORT = qw(
 );
 
 use vars qw($VERSION);
-$VERSION = sprintf "%d", q$Revision: 3253 $ =~ /(\d+)/;
+$VERSION = sprintf "%d", q$Revision: 3680 $ =~ /(\d+)/;
 
 require XSLoader;
 XSLoader::load('Mail::OpenDKIM', $VERSION);
@@ -679,7 +679,9 @@ Feedback will be greatfully received.
 
 =head1 AUTHOR
 
-Nigel Horne, C<< <nigel at mailermailer.com> >>
+Nigel Horne
+
+Vick Khera, C<< <vivek at khera.org> >>
 
 =head1 SUPPORT
 
@@ -721,7 +723,7 @@ http://www.mailermailer.com/
 
 =head1 COPYRIGHT AND LICENCE
 
-This module is Copyright 2011 Khera Communications, Inc.
+This module is Copyright 2012 Khera Communications, Inc.
 It is licensed under the same terms as Perl itself.
 
 =cut

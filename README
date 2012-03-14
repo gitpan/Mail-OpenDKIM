@@ -172,7 +172,9 @@ NOTES
     Feedback will be greatfully received.
 
 AUTHOR
-    Nigel Horne, "<nigel at mailermailer.com>"
+    Nigel Horne
+
+    Vick Khera, "<vivek at khera.org>"
 
 SUPPORT
     You can find documentation for this module with the perldoc command.
@@ -206,6 +208,6 @@ SPONSOR
     http://www.mailermailer.com/
 
 COPYRIGHT AND LICENCE
-    This module is Copyright 2011 Khera Communications, Inc. It is licensed
+    This module is Copyright 2012 Khera Communications, Inc. It is licensed
     under the same terms as Perl itself.
 

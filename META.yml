@@ -1,9 +1,9 @@
 --- #YAML:1.0
 name:               Mail-OpenDKIM
-version:            3253
+version:            3680
 abstract:           Provides an interface to OpenDKIM C library
 author:
-    - Nigel Horne <nigel@mailermailer.com>
+    - Vivek Khera <vivek@khera.org>
 license:            perl
 distribution_type:  module
 configure_requires:
@@ -18,7 +18,7 @@ no_index:
     directory:
         - t
         - inc
-generated_by:       ExtUtils::MakeMaker version 6.56
+generated_by:       ExtUtils::MakeMaker version 6.57_05
 meta-spec:
     url:      http://module-build.sourceforge.net/META-spec-v1.4.html
     version:  1.4
