@@ -140,7 +140,7 @@ our @EXPORT = qw(
 );
 
 use vars qw($VERSION);
-$VERSION = sprintf "%d", q$Revision: 3680 $ =~ /(\d+)/;
+$VERSION = sprintf "%d", q$Revision: 4002 $ =~ /(\d+)/;
 
 require XSLoader;
 XSLoader::load('Mail::OpenDKIM', $VERSION);
@@ -390,7 +390,14 @@ sub dkim_getcachestats
 {
   my ($self, $args) = @_;
 
-  return _dkim_getcachestats($$args{queries}, $$args{hits}, $$args{expired});
+  if (dkim_libversion() >= 0x02080000) {
+    unless($self->{_dkimlib_handle}) {
+      throw Error::Simple('dkim_set_dns_callback called before dkim_init');
+    }
+    return _dkim_getcachestats($self->{_dkimlib_handle}, $$args{queries}, $$args{hits}, $$args{expired}, $$args{keys});
+  } else {
+    return _dkim_getcachestats($$args{queries}, $$args{hits}, $$args{expired});
+  }
 }
 
 =head2 dkim_set_dns_callback
