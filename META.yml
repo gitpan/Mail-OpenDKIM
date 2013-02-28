@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Mail-OpenDKIM
-version:            4002
+version:            4003
 abstract:           Provides an interface to OpenDKIM C library
 author:
     - Vivek Khera <vivek@khera.org>

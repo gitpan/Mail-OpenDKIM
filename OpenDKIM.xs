@@ -2,7 +2,7 @@
  * This module is Copyright 2012 Khera Communications, Inc.
  * It is licensed under the same terms as Perl itself.
  *
- * $Id: OpenDKIM.xs 4002 2013-02-28 18:38:49Z khera $
+ * $Id: OpenDKIM.xs 4003 2013-02-28 19:25:07Z khera $
  *
  */
 #include "EXTERN.h"
@@ -875,7 +875,7 @@ _dkim_getid(dkim)
 	OUTPUT:
 		RETVAL
 
-#if OPENDKIM_LIB_VERSION < 0x02080000
+#if OPENDKIM_LIB_VERSION < 0x02070000
 
 uint64_t
 _dkim_get_msgdate(dkim)
