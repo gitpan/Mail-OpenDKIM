@@ -2,7 +2,7 @@
  * This module is Copyright 2012 Khera Communications, Inc.
  * It is licensed under the same terms as Perl itself.
  *
- * $Id: OpenDKIM.xs 4003 2013-02-28 19:25:07Z khera $
+ * $Id: OpenDKIM.xs 4039 2013-06-18 19:37:41Z khera $
  *
  */
 #include "EXTERN.h"
@@ -969,7 +969,7 @@ _dkim_diffheaders(dkim, canon, maxcost, ohdrs, nohdrs, out, nout)
 		DKIM *dkim
 		dkim_canon_t canon
 		int maxcost
-		char **ohdrs
+		char *&ohdrs
 		int nohdrs
 		struct dkim_hdrdiff *out = NO_INIT
 		int nout = NO_INIT

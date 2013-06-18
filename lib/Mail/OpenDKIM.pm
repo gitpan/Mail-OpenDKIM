@@ -140,7 +140,7 @@ our @EXPORT = qw(
 );
 
 use vars qw($VERSION);
-$VERSION = sprintf "%d", q$Revision: 4003 $ =~ /(\d+)/;
+$VERSION = sprintf "%d", q$Revision: 4040 $ =~ /(\d+)/;
 
 require XSLoader;
 XSLoader::load('Mail::OpenDKIM', $VERSION);
@@ -635,7 +635,7 @@ sub DESTROY
 {
   my $self = shift;
 
-  if($self->{_dkimlib_handle}) {
+  if ($self->{_dkimlib_handle}) {
     $self->dkim_close();
   }
 }

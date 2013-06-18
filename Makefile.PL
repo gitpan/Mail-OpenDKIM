@@ -1,4 +1,4 @@
-# $Id: Makefile.PL 3678 2012-03-14 16:42:40Z khera $
+# $Id: Makefile.PL 4039 2013-06-18 19:37:41Z khera $
 use 5.010000;
 use ExtUtils::MakeMaker;
 use Config;
@@ -41,6 +41,7 @@ WriteMakefile(
     INC => '-I/usr/local/include',
     OBJECT => '$(O_FILES)', # link all the C files too
     LICENSE => 'perl',
+    OPTIMIZE => '-O0',          # -O2 errors with perl 5.16, gcc 4.2.1, FreeBSD 9.1
 );
 
 sub MY::postamble {
