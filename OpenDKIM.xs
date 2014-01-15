@@ -2,7 +2,7 @@
  * This module is Copyright 2012 Khera Communications, Inc.
  * It is licensed under the same terms as Perl itself.
  *
- * $Id: OpenDKIM.xs 4039 2013-06-18 19:37:41Z khera $
+ * $Id: OpenDKIM.xs 4190 2014-01-10 16:42:08Z khera $
  *
  */
 #include "EXTERN.h"
@@ -347,7 +347,7 @@ call_dns_query_cancel_callback(void *a, void *b)
 
 	if(sv == NULL) {
 		croak("Internal error: call_dns_query_cancel called, but nothing to call");
-		return;
+		return -1;
 	}
 
 	PUSHMARK(SP);
@@ -409,7 +409,7 @@ call_dns_query_start_callback(void *a, int b, unsigned char *c, unsigned char *d
 
 	if(sv == NULL) {
 		croak("Internal error: call_dns_query_service called, but nothing to call");
-		return;
+		return -1;
 	}
 
 	PUSHMARK(SP);
@@ -453,7 +453,7 @@ call_dns_query_waitreply_callback(void *a, void *b, struct timeval *c, size_t *d
 
 	if(sv == NULL) {
 		croak("Internal error: call_dns_query_service called, but nothing to call");
-		return;
+		return -1;
 	}
 
 	PUSHMARK(SP);

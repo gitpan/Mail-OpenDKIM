@@ -21,4 +21,4 @@ requires:
   Carp: 0
   Error: 0
   Test::More: 0.82
-version: 4040
+version: 4192
