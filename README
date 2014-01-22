@@ -134,8 +134,26 @@ SUBROUTINES/METHODS
   dkim_libversion
     Static method.
 
+  dkim_ssl_version
+    Static method.
+
   dkim_getcachestats
     Static method.
+
+  dkim_getpolicystr
+    Calls C routine of same name.
+
+  dkim_getpresultstr
+    Calls C routine of same name.
+
+  dkim_getresultstr
+    Calls C routine of same name.
+
+  dkim_sig_geterrorstr
+    Calls C routine of same name.
+
+  dkim_mail_parse
+    Calls C routine of same name.
 
 EXPORT
     Many DKIM_* constants, e.g. DKIM_STAT_OK are exported.

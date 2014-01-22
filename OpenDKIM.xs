@@ -2,7 +2,7 @@
  * This module is Copyright 2012 Khera Communications, Inc.
  * It is licensed under the same terms as Perl itself.
  *
- * $Id: OpenDKIM.xs 4190 2014-01-10 16:42:08Z khera $
+ * $Id: OpenDKIM.xs 4203 2014-01-22 20:50:02Z khera $
  *
  */
 #include "EXTERN.h"
@@ -974,7 +974,7 @@ _dkim_diffheaders(dkim, canon, maxcost, ohdrs, nohdrs, out, nout)
 		struct dkim_hdrdiff *out = NO_INIT
 		int nout = NO_INIT
 	CODE:
-		RETVAL = dkim_diffheaders(dkim, canon, maxcost, ohdrs, nohdrs, &out, &nout);
+		RETVAL = dkim_diffheaders(dkim, canon, maxcost, &ohdrs, nohdrs, &out, &nout);
 	OUTPUT:
 		out
 		nout
@@ -1008,7 +1008,7 @@ DKIM_STAT
 _dkim_getsighdr_d(dkim, initial, buf, len)
 		DKIM *dkim
 		size_t initial
-		unsigned char *buf = NO_INIT
+		unsigned char *&buf = NO_INIT
 		size_t len = NO_INIT
 	CODE:
 		RETVAL = dkim_getsighdr_d(dkim, initial, &buf, &len);
@@ -1058,7 +1058,7 @@ DKIM_STAT
 _dkim_ohdrs(dkim, sig, ptrs, cnt)
 		DKIM *dkim
 		DKIM_SIGINFO *sig
-		unsigned char *ptrs = NO_INIT
+		unsigned char &ptrs = NO_INIT
 		int cnt
 	CODE:
 		RETVAL = dkim_ohdrs(dkim, sig, &ptrs, &cnt);
